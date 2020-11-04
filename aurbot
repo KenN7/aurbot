@@ -42,7 +42,7 @@ from time import sleep, time, strftime, localtime
 from urllib.request import urlopen, Request
 
 # extra import
-from systemd.daemon import notify
+# from systemd.daemon import notify
 
 class Error(BaseException):
   '''Error handling.'''
@@ -409,7 +409,7 @@ class Robot():
     # Load config.
     self._parse_config()
     # Tell to systemd we are ready.
-    notify("READY=1\n")
+    #notify("READY=1\n")
 
   def _parse_argv(self):
     '''Parse command line arguments'''
