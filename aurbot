@@ -288,7 +288,7 @@ class Package():
         self._run_command("build", self._config['build_cmd'], logfo)
         # Execute commit command.
         if "commit_cmd" in self._config:
-          self._run_command("commit", self._config['commit_cmd'], logfo)
+          self._run_command("commit", self._config['commit_cmd'].format(pacname=self.name), logfo)
         chdir(cwd)
         # we have to register after chdir in the original directory
         self._local.lastsuccess = self._aur.lastmodified
