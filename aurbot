@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 # standard imports
 from argparse import ArgumentParser
-from configparser import ConfigParser
+from configparser import SafeConfigParser
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formatdate
@@ -428,7 +428,7 @@ class Robot():
       mtime = stat(self._args.config).st_mtime
       # Reload only when file has been modified.
       if not hasattr(self, "_config") or mtime > self._config_mtime:
-        self._config = ConfigParser()
+        self._config = SafeConfigParser(environ)
         self._config.read(self._args.config)
         self._config_mtime = mtime
         info(f"Config file loaded: {self._args.config}")
